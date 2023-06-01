@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HomepageService } from './services/homepage.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(
+    private homepageService: HomepageService,
+  ) {
+    this.homepageService.tokenApi().subscribe(res =>{
+      console.log('res1', res.access_token);
+      localStorage.setItem('azureId', res.access_token);
+    })
+  }
+
 }

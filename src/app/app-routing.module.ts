@@ -2,20 +2,22 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
+  // { path: 'favicon.ico', redirectTo: '' },
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
+ 
+  {
+    path: 'tripview',
+    loadChildren: () => import('./pages/tripview/tripview.module').then( m => m.TripviewPageModule)
+  },
+  { path: 'favicon.ico', pathMatch: 'prefix', redirectTo: '../assets/icon/favicon.png' },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, initialNavigation: 'enabledBlocking' })
   ],
   exports: [RouterModule]
 })

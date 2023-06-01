@@ -12,9 +12,42 @@
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-grid class="image-slider all" style="margin-top: 20px;" *ngIf="all">
+    <ion-row>
+    
+      <ion-col  *ngFor="let items of all" size-lg="3" size-md="4" size-sm="6" size-xs="6" size-xl="3">
+        <div class="main-card inner" *ngIf="items">
+  
+          <div class="inner-card">
+            <div class="top-bar">
+              <span>
+                <i class="fa fa-heart"></i>
+                <!-- <img src="../../assets/icon/Vector (7).png" width="16px" /> -->
+                <p class="ion-label">{{items.favoriteCount}}</p>
+              </span>
+            </div>
+            <div class="img-back">
+            <img appLazyImg src={{items.pictureFilePath}} srcset="{{items.pictureFilePath}} 320w, {{items.pictureFilePath}} 480w, {{items.pictureFilePath}} 640w, {{items.pictureFilePath}} 800w, {{items.pictureFilePath}} 1100w" sizes="(max-width: 1100px) 1100px, 100vw" alt="{{items.name}}" loading="lazy" class="img-fit"/>
+          </div>
+            <!-- <img src='../../../assets/background-null.jpg' alt="{{items.name}}" class="img-fit" /> -->
+            <div class="bottom-bar">
+              <strong>{{items.name}}</strong>
+              <label class="ion-label">
+                <!-- <i class="fa fa-user"></i> -->
+                <small>
+                  <h5 class="ion-text" color="light"><span style="text-transform: lowercase; font-size: 13px; font-weight: 100; color: #7A818C;">by</span> {{items.userName}}</h5>
+                </small>
+                <!-- <small><i class="fa fa-map-marker"></i><ion-text color="light">{{trending[0].country }}</ion-text></small> -->
+              </label>
+              <label style="color: #242F40;"><span style="color: #242F40;"> <span  class="hide"><i class="fa fa-calendar-o" style="margin-right: 4px; margin-bottom: 1px; font-size: 10px; color: rgba(122, 129, 140, 0.8);;" aria-hidden="true"></i></span> {{items.duration}}<span style="padding-left: 2.5px; color: #000;">days</span></span><span class="xl"><i class="fas fa-circle" style="font-size: 5px;color:rgba(122, 129, 140, 0.8);"></i></span> <span><span  class="hide"><i
+                  class="fa fa-building-o" style="margin-right: 4px; margin-bottom: 1px; font-size: 10px; color: rgba(122, 129, 140, 0.8);;" aria-hidden="true"></i></span> {{items.numCities}}<span style="padding-left: 2.5px; color: #000;">cities</span></span> <span class="xl"><i class="fas fa-circle" style="font-size: 5px; color: rgba(122, 129, 140, 0.8);;"></i></span> <span><span  class="hide"><i
+                  class="fa fa-users" style="margin-right: 4px; margin-bottom: 1px; font-size: 10px; color: rgba(122, 129, 140, 0.8);;" aria-hidden="true"></i></span>  {{items.tripType}} </span></label>
+            </div>
+          </div>
+        </div>
+      </ion-col>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+
+    </ion-row>
+  </ion-grid>
 </ion-content>
